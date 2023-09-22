@@ -69,13 +69,14 @@ pipeline {
                 }
               ]
           }"""
-        def buildInfo = server.upload(uploadSpec)
-        buildInfo.env.collect()
-        server.publishBuildInfo(buildInfo)
-        echo '<--------------- Jar Publish Ended --------------->'
+
+          def buildInfo = server.upload(uploadSpec)
+          buildInfo.env.collect()
+          server.publishBuildInfo(buildInfo)
+          echo '<--------------- Jar Publish Ended --------------->'
+        }
       }
     }
-  
 
     stage(" Docker Build ") {
       steps {
