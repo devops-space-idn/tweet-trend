@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: valaxy-rtp
-  namespace: valaxy
+  name: devopsidn-rtp
+  namespace: devopsidn
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app:  valaxy-rtp
+      app:  devopsidn-rtp
   template:
     metadata:
       labels:
-        app:  valaxy-rtp
+        app:  devopsidn-rtp
     spec:
       imagePullSecrets:
-      - name: jfrogcred 
+      - name: cred
       containers:
-      - name:  valaxy-rtp
-        image: valaxy05.jfrog.io/valaxy-docker/ttrend:2.1.4
+      - name:  devopsidn-rtp
+        image: devopsidn.jfrog.io/devops-docker/ttrend:2.1.4
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
