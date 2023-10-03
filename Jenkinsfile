@@ -1,6 +1,6 @@
 def registry = 'https://devopsidn.jfrog.io'
 def imageName = 'devopsidn.jfrog.io/devops-docker-local/ttrend'
-def version = '2.1.4'
+def version = '2.1.5'
 
 pipeline {
   agent {
@@ -104,7 +104,10 @@ pipeline {
       steps {
         script {
           echo '<--------------- Helm Deploy Started --------------->'
-          sh 'helm install ttrend-0.1.0 ttrend-0.1.0.tgz'
+          sh 'helm create ttrend-0.1.1'
+          sh 'rm -r ttrend-1.1.1/templates/*'
+          sh 'cp *.yaml ttrend-1.1.1/templates/'
+          sh 'helm install ttrend-0.1.1 ttrend-0.1.1.tgz'
           echo '<--------------- Helm deploy Ends --------------->'
         }
       }

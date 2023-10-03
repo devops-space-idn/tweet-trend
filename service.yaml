@@ -8,6 +8,6 @@ spec:
   selector:
     app: devopsidn-rtp
   ports:
-  - nodePort: 30082
+  - nodePort: 30083
     port: 8000
     targetPort: 8000
