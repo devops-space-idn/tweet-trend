@@ -104,10 +104,11 @@ pipeline {
       steps {
         script {
           echo '<--------------- Helm Deploy Started --------------->'
-          sh 'helm create ttrend-0.1.1'
-          sh 'rm -r ttrend-1.1.1/templates/*'
-          sh 'cp *.yaml ttrend-1.1.1/templates/'
-          sh 'helm install ttrend-0.1.1 ttrend-0.1.1.tgz'
+          sh 'helm create ttrend'
+          sh 'rm -r ttrend/templates/*'
+          sh 'cp *.yaml ttrend/templates/'
+          sh 'helm package ttrend'
+          sh 'helm install ttrend-0.1.0 ttrend-0.1.0.tgz'
           echo '<--------------- Helm deploy Ends --------------->'
         }
       }
